@@ -1,14 +1,38 @@
 const palindromes = function(str) {
-let punctuation = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
-let rawChar = str;
-let cleanChar = rawChar.filter(function(letter){
-    return punctuation.indexOf(letter) === -1;
-})
-let cleanString = cleanChar.join(''); 
-let reverStr = cleanString.split('').reverse().join('');
-str.toLowerCase();
+//check punctuation
+const backtic = "`";
+const punctuation = `!#$%&\()*+,"'-./ :;<=>?@[\\]^_{|}~${backtic}`;
+const arrayPunc = [...punctuation];
 
-return reverStr === str;
+//Convert str to lowercase
+const toLowerCase = str.toLowerCase();
+//change string to array
+let strArray = [...toLowerCase];
+
+//remove Punc from array
+function removePunctuation(strInput){    
+   let puncRemove = strInput.filter(char => arrayPunc.indexOf(char) === -1);
+    return puncRemove;
 }
 
-// module.exports = palindromes
+//assign array to puncRemoved
+let puncRemoved = removePunctuation(strArray);
+
+//convert puncRemoved to string
+let strPuncRemoved = puncRemoved.toString();
+//remove commas
+strPuncRemoved = strPuncRemoved.replace(/,/g, '');
+
+//check palendrome:
+    function isPaldrome (str){
+    const cleanStr = str;
+    const reverseStr = cleanStr.split('').reverse().join('');
+    return reverseStr === cleanStr;
+}
+
+const palendromeBool = isPaldrome(strPuncRemoved);
+
+return palendromeBool;
+}
+
+module.exports = palindromes
