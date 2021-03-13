@@ -1,5 +1,48 @@
-const caesar = function() {
+// const caesar = function(JasmineInput, seed) {
+//let theString = JasmineInput;    
 
-}
+theString = "A B C";
+seed = 2;
+//convvert each character to unicode
+    function toUnicode(theString) {
+        let unicodeString = '';
+        for (var i=0; i < theString.length; i++) {
+          var theUnicode = theString.charCodeAt(i).toString(10);
+          while (theUnicode.length < 4) {
+            theUnicode = 0 + theUnicode;
+          }
+          theUnicode = ' ' + theUnicode;
+          unicodeString += theUnicode;
+        }
+        console.log(unicodeString);
+        return unicodeString;
+      }
+const testUni  = toUnicode(theString).split(' ');
+testUni.shift();
 
-module.exports = caesar
+const decodedMessage = testUni.map(function (x) { 
+  return parseInt(x, 10); 
+});
+
+const encodedMessage = decodedMessage.map(function (x) { 
+  return x + seed; 
+});
+
+const encodedMessageStr = encodedMessage.toString();
+
+const cypherString = String.fromCharCode(encodedMessageStr);
+
+
+
+
+//check if letter (32 are spaces)
+
+//put each unicode in an array
+
+
+
+      // }
+
+
+
+// module.exports = caesar
