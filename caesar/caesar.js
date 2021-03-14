@@ -1,8 +1,6 @@
-// const caesar = function(JasmineInput, seed) {
-//let theString = JasmineInput;    
-
-theString = "A B C";
-seed = 2;
+const caesar = function(theString, seed) {
+  // theString = "A"
+  // seed  = 1;
 //convvert each character to unicode
     function toUnicode(theString) {
         let unicodeString = '';
@@ -17,6 +15,7 @@ seed = 2;
         console.log(unicodeString);
         return unicodeString;
       }
+      
 const testUni  = toUnicode(theString).split(' ');
 testUni.shift();
 
@@ -28,9 +27,10 @@ const encodedMessage = decodedMessage.map(function (x) {
   return x + seed; 
 });
 
-const encodedMessageStr = encodedMessage.toString();
+encodedMessage.toString();
 
-const cypherString = String.fromCharCode(encodedMessageStr);
+return String.fromCharCode(...encodedMessage);
+
 
 
 
@@ -40,9 +40,8 @@ const cypherString = String.fromCharCode(encodedMessageStr);
 //put each unicode in an array
 
 
-
-      // }
-
+}
 
 
-// module.exports = caesar
+
+module.exports = caesar
